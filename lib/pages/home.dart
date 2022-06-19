@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'info.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -10,9 +12,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
   List<Widget> pages = [
-    Center(
-      child: Text('info'),
-    ),
+    InfoScreen(),
     Center(
       child: Text('Fetch data'),
     )
