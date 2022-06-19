@@ -37,7 +37,9 @@ class _EditInfoScreenState extends State<EditInfoScreen> {
                 leading: Text('Birthday'),
                 title: TextButton(
                   child: Text('choose date'),
-                  onPressed: () {},
+                  onPressed: () {
+                    _selectDate();
+                  },
                 ),
               ),
               ListTile(
@@ -63,5 +65,20 @@ class _EditInfoScreenState extends State<EditInfoScreen> {
     if (_keyform.currentState!.validate()) {
       print(true);
     }
+  }
+
+  _selectDate() async {
+    DateTime firstDate = DateTime(DateTime.now().year - 100);
+    DateTime lastDate = DateTime.now();
+
+    DateTime birthday = await showDatePicker(
+          context: context,
+          initialDate: DateTime.now(),
+          firstDate: firstDate,
+          lastDate: lastDate,
+        ) ??
+        DateTime.now();
+
+    print(birthday);
   }
 }
