@@ -78,6 +78,7 @@ class _EditInfoScreenState extends State<EditInfoScreen> {
       _keyform.currentState!.save();
       if (await _storeData()) {
         print('store complete');
+        Navigator.pop(context);
       }
     }
   }
