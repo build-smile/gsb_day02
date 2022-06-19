@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gsb_day2/models/Info.dart';
+import 'package:gsb_day2/utils/localData.dart';
 import 'package:intl/intl.dart';
 
 class EditInfoScreen extends StatefulWidget {
@@ -72,14 +73,21 @@ class _EditInfoScreenState extends State<EditInfoScreen> {
     return null;
   }
 
-  _submit() {
+  _submit() async {
     if (_keyform.currentState!.validate()) {
       _keyform.currentState!.save();
-      print(
-        'name: ${info.name} '
-        'position: ${info.position} birthday : ${info.birthday}',
-      );
+      if (await _storeData()) {
+        print('store complete');
+      }
     }
+  }
+
+  Future<bool> _storeData() async {
+    LocalData localData = LocalData();
+    bool isSave = await localData.setString(key: 'name', value: info.name);
+    isSave = await localData.setString(key: 'position', value: info.position);
+    isSave = await localData.setString(key: 'birthday', value: info.birthday);
+    return isSave;
   }
 
   _selectDate() async {
