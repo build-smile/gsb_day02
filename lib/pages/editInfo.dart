@@ -25,12 +25,18 @@ class _EditInfoScreenState extends State<EditInfoScreen> {
             children: [
               ListTile(
                 title: TextFormField(
+                  onSaved: (String? value) {
+                    info.name = value!;
+                  },
                   validator: _validateString,
                   decoration: InputDecoration(labelText: 'Name'),
                 ),
               ),
               ListTile(
                 title: TextFormField(
+                  onSaved: (String? value) {
+                    info.position = value!;
+                  },
                   validator: _validateString,
                   decoration: InputDecoration(labelText: 'Position'),
                 ),
@@ -67,7 +73,11 @@ class _EditInfoScreenState extends State<EditInfoScreen> {
 
   _submit() {
     if (_keyform.currentState!.validate()) {
-      print(true);
+      _keyform.currentState!.save();
+      print(
+        'name: ${info.name} '
+        'position: ${info.position} birthday : ${info.birthday}',
+      );
     }
   }
 
