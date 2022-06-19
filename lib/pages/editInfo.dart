@@ -8,6 +8,7 @@ class EditInfoScreen extends StatefulWidget {
 }
 
 class _EditInfoScreenState extends State<EditInfoScreen> {
+  var _keyform = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,15 +18,18 @@ class _EditInfoScreenState extends State<EditInfoScreen> {
       body: Container(
         margin: EdgeInsets.all(8),
         child: Form(
+          key: _keyform,
           child: Column(
             children: [
               ListTile(
                 title: TextFormField(
+                  validator: _validateString,
                   decoration: InputDecoration(labelText: 'Name'),
                 ),
               ),
               ListTile(
                 title: TextFormField(
+                  validator: _validateString,
                   decoration: InputDecoration(labelText: 'Position'),
                 ),
               ),
@@ -39,12 +43,25 @@ class _EditInfoScreenState extends State<EditInfoScreen> {
               ListTile(
                   title: ElevatedButton(
                 child: Text('submit'),
-                onPressed: () {},
+                onPressed: _submit,
               ))
             ],
           ),
         ),
       ),
     );
+  }
+
+  String? _validateString(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please fill data';
+    }
+    return null;
+  }
+
+  _submit() {
+    if (_keyform.currentState!.validate()) {
+      print(true);
+    }
   }
 }
