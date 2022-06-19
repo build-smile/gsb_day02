@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gsb_day2/models/Info.dart';
+import 'package:intl/intl.dart';
 
 class EditInfoScreen extends StatefulWidget {
   const EditInfoScreen({Key? key}) : super(key: key);
@@ -93,7 +94,8 @@ class _EditInfoScreenState extends State<EditInfoScreen> {
         ) ??
         DateTime.now();
 
-    info.birthday = birthday.toString();
+    info.birthday =
+        DateFormat.yMMMMEEEEd().format(birthday); //birthday.toString();
     setState(() {});
   }
 }
