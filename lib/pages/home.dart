@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'Fetch.dart';
 import 'info.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,12 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
-  List<Widget> pages = [
-    InfoScreen(),
-    Center(
-      child: Text('Fetch data'),
-    )
-  ];
+  List<Widget> pages = [InfoScreen(), FetchScreen()];
 
   @override
   Widget build(BuildContext context) {
