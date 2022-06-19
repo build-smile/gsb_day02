@@ -34,7 +34,10 @@ class _InfoScreenState extends State<InfoScreen> {
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pushNamed(context, '/edit_info',
-                          arguments: info);
+                              arguments: info)
+                          .then((value) {
+                        setState(() {});
+                      });
                     },
                     child: Icon(Icons.edit),
                   )
