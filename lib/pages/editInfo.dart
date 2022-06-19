@@ -14,6 +14,37 @@ class _EditInfoScreenState extends State<EditInfoScreen> {
       appBar: AppBar(
         title: Text('Edit Info'),
       ),
+      body: Container(
+        margin: EdgeInsets.all(8),
+        child: Form(
+          child: Column(
+            children: [
+              ListTile(
+                title: TextFormField(
+                  decoration: InputDecoration(labelText: 'Name'),
+                ),
+              ),
+              ListTile(
+                title: TextFormField(
+                  decoration: InputDecoration(labelText: 'Position'),
+                ),
+              ),
+              ListTile(
+                leading: Text('Birthday'),
+                title: TextButton(
+                  child: Text('choose date'),
+                  onPressed: () {},
+                ),
+              ),
+              ListTile(
+                  title: ElevatedButton(
+                child: Text('submit'),
+                onPressed: () {},
+              ))
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
