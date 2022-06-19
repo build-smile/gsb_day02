@@ -10,14 +10,21 @@ class InfoScreen extends StatefulWidget {
 class _InfoScreenState extends State<InfoScreen> {
   @override
   Widget build(BuildContext context) {
+    TextStyle textStyle = TextStyle(fontSize: 20);
     return Scaffold(
       body: Container(
         width: double.infinity,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Name:'),
-            Text('Position:'),
-            Text('Birthday:'),
+            Text('Name:', style: textStyle),
+            Text('Position:', style: textStyle),
+            Text('Birthday:', style: textStyle),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {},
+              child: Icon(Icons.edit),
+            )
           ],
         ),
       ),
