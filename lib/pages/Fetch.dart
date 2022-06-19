@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gsb_day2/services/FeedAPI.dart';
 
+import '../models/Feed.dart';
+
 class FetchScreen extends StatefulWidget {
   const FetchScreen({Key? key}) : super(key: key);
 
@@ -14,7 +16,19 @@ class _FetchScreenState extends State<FetchScreen> {
     return Scaffold(
       body: FutureBuilder(
         future: FeedService().getFeeds(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
+        builder: (BuildContext context, AsyncSnapshot<List<Feed>> snapshot) {
+          if (snapshot.hasData) {
+            List<Feed> feeds = snapshot.data!;
+            return ListView.builder(
+              itemCount: feeds.length,
+              itemBuilder: (BuildContext context, int i) {
+                Feed feed = feeds[i];
+                return ListTile(
+                  title: Text(feed.title),
+                );
+              },
+            );
+          }
           return Center(child: CircularProgressIndicator());
         },
       ),
