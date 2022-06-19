@@ -33,7 +33,8 @@ class _InfoScreenState extends State<InfoScreen> {
                   SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/edit_info');
+                      Navigator.pushNamed(context, '/edit_info',
+                          arguments: info);
                     },
                     child: Icon(Icons.edit),
                   )

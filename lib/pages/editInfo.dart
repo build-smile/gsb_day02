@@ -15,6 +15,7 @@ class _EditInfoScreenState extends State<EditInfoScreen> {
   Info info = Info();
   @override
   Widget build(BuildContext context) {
+    info = ModalRoute.of(context)!.settings.arguments as Info;
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit Info'),
@@ -27,6 +28,7 @@ class _EditInfoScreenState extends State<EditInfoScreen> {
             children: [
               ListTile(
                 title: TextFormField(
+                  initialValue: info.name,
                   onSaved: (String? value) {
                     info.name = value!;
                   },
@@ -36,6 +38,7 @@ class _EditInfoScreenState extends State<EditInfoScreen> {
               ),
               ListTile(
                 title: TextFormField(
+                  initialValue: info.position,
                   onSaved: (String? value) {
                     info.position = value!;
                   },
