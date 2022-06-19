@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gsb_day2/models/Info.dart';
 
 class EditInfoScreen extends StatefulWidget {
   const EditInfoScreen({Key? key}) : super(key: key);
@@ -9,6 +10,7 @@ class EditInfoScreen extends StatefulWidget {
 
 class _EditInfoScreenState extends State<EditInfoScreen> {
   var _keyform = GlobalKey<FormState>();
+  Info info = Info();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +38,9 @@ class _EditInfoScreenState extends State<EditInfoScreen> {
               ListTile(
                 leading: Text('Birthday'),
                 title: TextButton(
-                  child: Text('choose date'),
+                  child: Text(
+                    info.birthday == '' ? 'choose date' : info.birthday,
+                  ),
                   onPressed: () {
                     _selectDate();
                   },
@@ -79,6 +83,7 @@ class _EditInfoScreenState extends State<EditInfoScreen> {
         ) ??
         DateTime.now();
 
-    print(birthday);
+    info.birthday = birthday.toString();
+    setState(() {});
   }
 }
